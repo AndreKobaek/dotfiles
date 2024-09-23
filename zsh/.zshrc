@@ -13,35 +13,19 @@ setopt complete_in_word # not just at the end
 ################################################################################
 
 case `uname` in
-  Darwin)
-    # commands for OS X go here
-    source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
-	test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-  ;;
   Linux)
     # commands for Linux go here
     source "${ZDOTDIR:-${HOME}}/.zshrc-`uname`"
   ;;
-  FreeBSD)
-    # commands for FreeBSD go here
-  ;;
 esac
 
-#machine specific stuff
-case $HOST in
-
-	"jupiter")
-		source "${ZDOTDIR:-${HOME}}/.zshrc-${HOST}"
-	;;
-	*)
-		source "${ZDOTDIR:-${HOME}}/.zshrc-general"
-esac
-
+eval $(keychain --timeout 540 --eval id_rsa)
 alias githash="git rev-parse HEAD"
 autoload -Uz promptinit
 promptinit
-PROMPT='%F{green}%n%f@%F{magenta}%M%f %F{blue}%B%~%b%f %# '
-RPROMPT='$(git_super_status)'
+PROMPT='@%F{magenta}%M%f %F{blue}%B%~%b%f $(git_super_status) %# '
+# RPROMPT='$(git_super_status)'
+# PROMPT='%F{green}%n%f@%F{magenta}%M%f %F{blue}%B%~%b%f $(git_super_status) %# '
 
 ################################################################################
 #                            KEY BINDINGS                                      #
@@ -196,8 +180,8 @@ case $TERM in
 #                            PLUGINS                                           #
 ################################################################################
 
-# source /usr/share/fzf/completion.zsh
-# source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 
 if [ -f ~/.config/using-rbenv ]; then
@@ -238,15 +222,15 @@ alias l="ls -lah"
 alias git_clean_merged_branches='git branch --merged | grep -E -v "(^\*|master|dev)" | xargs git branch -d'
 
 # ledger aliases
-alias itau_txt_convert="reckon --csv-separator=';' --date-format '%d/%m/%Y' --date-column 1 --money-column 3 -c 'R$' --account 'Assets:Bank:Itau' -o ~/finances/main.dat -t tokens.yaml --comma-separates-cents -l ~/finances/main.dat -f itau.txt"
-alias bradesco_ofx_convert="ledger-autosync -l ~/finances/main.dat --fid 000 --account Assets:Bank:Bradesco bradesco.ofx >> bradesco.dat"
+
+
 alias vim=nvim
-
-
+alias gl='git log'
+alias gd='git diff'
+alias gs='git status'
+alias gf='git fetch'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias startup="xinit $HOME/.xinitrc i3"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-#asdf
-. /opt/asdf-vm/asdf.sh
-
-
+eval "$(direnv hook zsh)"
