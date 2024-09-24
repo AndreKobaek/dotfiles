@@ -1,18 +1,18 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-	name = Rafael Moreira
-	email = me@rafaelmoreira.net 
+	name = André Kobæk
+	email = andre.kobak@visma.com 
 [alias]
 	po = push origin master
 [github]
-	user = rafamoreira
+	user = AndreKobaek
 [core]
 	excludesFile = ~/.gitignore
 	editor = vim
 [init]
-	templatedir = /home/rmc/.git-templates
-  defaultBranch = master
+	templatedir = /home/andre/.git-templates
+        defaultBranch = master
 [diff]
 	tool = vimdiff
 [credential]
