@@ -1,10 +1,11 @@
 # This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
 	name = André Kobæk
 	email = andre.kobak@visma.com 
 [alias]
 	po = push origin master
+[branch]
+        sort = -committerdate
 [github]
 	user = AndreKobaek
 [core]
@@ -15,7 +16,35 @@
         defaultBranch = master
 [diff]
 	tool = vimdiff
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
 [credential]
 	helper = cache --timeout=604800
+[column]
+        ui = auto
+[tag]
+        sort = version:refname
 [push]
-	autoSetupRemote = true
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[fetch]
+        prune = true
+        pruneTags = true
+        all = true
+
+# why the hell not?
+
+[help]
+        autocorrect = prompt
+[commit]
+        verbose = true
+[rerere]
+        enabled = true
+        autoupdate = true
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true

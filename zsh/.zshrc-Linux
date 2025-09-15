@@ -1,1 +1,1 @@
-source "/usr/lib/zsh-git-prompt/zshrc.sh"
+source "/usr/share/zsh/scripts/git-prompt.zsh"

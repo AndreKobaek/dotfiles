@@ -19,11 +19,11 @@ case `uname` in
   ;;
 esac
 
-eval $(keychain --timeout 540 --eval id_rsa)
+eval $(keychain --timeout 540 --eval id_ed25519)
 alias githash="git rev-parse HEAD"
 autoload -Uz promptinit
 promptinit
-PROMPT='@%F{magenta}%M%f %F{blue}%B%~%b%f $(git_super_status) %# '
+PROMPT='@%F{magenta}%M%f %F{blue}%B%~%b%f $(gitprompt) %# '
 # RPROMPT='$(git_super_status)'
 # PROMPT='%F{green}%n%f@%F{magenta}%M%f %F{blue}%B%~%b%f $(git_super_status) %# '
 
